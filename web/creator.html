@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=0">
+  <title>Data Creator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="content">
+    <h1>Data Creator</h1>
+    <div id="user-data">
+      <input id="student" type="text" placeholder="Type your name" />
+      <button id="student-button" class="buttons">Start</button>
+    </div>
+    <div id="instructions-container">
+      <span id="instructions"></span>
+      <br />
+      <button id="next" class="buttons">Next</button>
+    </div>
+    <br />
+    <div id="sketchContainer">
+      <div id="sketchPadContainer"></div>
+      <br />
+      <button id="undo" class="buttons">UNDO</button>
+    </div>
+  </div>
+  <script src="js/sketchPad.js">
+  </script>
+  <script src="js/draw.js"></script>
+  <script src="js/data.js"></script>
+</body>
+
+</html>
