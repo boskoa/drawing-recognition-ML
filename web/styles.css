@@ -3,7 +3,10 @@
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(255, 201, 84);
+}
+
+body {
+  background-color: rgb(234, 255, 160);
 }
 
 #content {
@@ -50,4 +53,36 @@
   &:active {
     transform: translateY(2px);
   }
+}
+
+#viewer {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.thumb {
+  width: 100%;
+}
+
+.rowLabel {
+  flex: 2 1 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.sampleContainer {
+  flex: 1 1 0;
+  background-color: white;
+  text-align: center;
+  border-radius: 10%;
+  margin: 1px;
+  overflow: hidden;
+}
+
+.blur {
+  filter: blur(2px);
 }

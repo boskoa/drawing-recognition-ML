@@ -64,7 +64,6 @@ function next() {
 }
 
 function save() {
-  console.log("SAVE");
   nextButton.style.display = "none";
   instructions.innerText =
     "Save your download alongside others in the dataset.";
