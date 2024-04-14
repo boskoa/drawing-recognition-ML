@@ -11,8 +11,9 @@ class SketchPad {
     container.appendChild(this.canvas);
 
     this.ctx = this.canvas.getContext("2d");
-    this.paths = [];
-    this.isDrawing = false;
+
+    this.reset();
+
     this.undoBtn = document.getElementById("undo");
 
     this.#addEventListeners();
@@ -52,7 +53,7 @@ class SketchPad {
     };
 
     document.ontouchend = () => {
-      this.canvas.onmouseup();
+      document.onmouseup();
     };
 
     this.undoBtn.onclick = () => {

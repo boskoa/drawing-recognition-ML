@@ -40,27 +40,27 @@ function start() {
 }
 
 function next() {
-  console.log("SKEČ", sketchPad.paths);
   if (!sketchPad.paths.length) {
     alert("Draw this one, first.");
-    return;
-  }
-
-  if (index === labels.length - 1) {
-    sketchContainer.style.visibility = "hidden";
-    instructions.innerText = "Thank you!";
-    nextButton.innerText = "Save";
-    nextButton.onclick = save;
     return;
   }
 
   const label = labels[index];
   data.drawings[label] = sketchPad.paths;
   sketchPad.reset();
-
   index++;
-  const nextLabel = labels[index];
-  instructions.innerText = `Please, draw a ${nextLabel}.`;
+
+  if (index < labels.length) {
+    const nextLabel = labels[index];
+    instructions.innerText = `Please, draw a ${nextLabel}.`;
+  } else {
+    sketchContainer.style.visibility = "hidden";
+    instructions.innerText = "Thank you!";
+    nextButton.innerText = "Save";
+    nextButton.removeEventListener("click", next);
+    nextButton.onclick = save;
+    return;
+  }
 }
 
 function save() {

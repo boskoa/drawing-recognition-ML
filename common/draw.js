@@ -17,3 +17,7 @@ const draw = {
     }
   },
 };
+
+if (typeof module !== "undefined") {
+  module.exports = draw;
+}
