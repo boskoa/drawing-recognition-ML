@@ -26,6 +26,17 @@ utils.groupBy = function (arr, key) {
 
 utils.flaggedUsers = [1713106169257, 1713106169255, 1713106169256];
 
+utils.styles = {
+  car: "grey",
+  fish: "red",
+  house: "yellow",
+  tree: "green",
+  bicycle: "cyan",
+  guitar: "blue",
+  pencil: "magenta",
+  clock: "lime",
+};
+
 if (typeof module !== "undefined") {
   module.exports = utils;
 }
