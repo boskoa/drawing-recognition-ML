@@ -54,3 +54,11 @@ function handleClick(sample, doScroll = true) {
   }
   chart.selectSample(sample);
 }
+
+function toggleInput() {
+  if (sketchPadViewer.style.display === "none") {
+    sketchPadViewer.style.display = "flex";
+  } else {
+    sketchPadViewer.style.display = "none";
+  }
+}

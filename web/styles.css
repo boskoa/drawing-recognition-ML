@@ -40,14 +40,16 @@ body {
 
 .buttons {
   all: unset;
-  width: 70px;
+  width: 90px;
   cursor: pointer;
   border: 2px solid teal;
   padding: 3px;
   color: teal;
+  font-size: 14px;
   font-weight: 600;
   border-radius: 4px;
   user-select: none;
+  text-align: center;
   transition: transform 0.1s;
 
   &:active {
@@ -93,10 +95,31 @@ body {
 
 #container {
   width: calc(100% - 400px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 #chartContainer {
   position: fixed;
   right: 0;
   top: calc(50% - 200px);
+}
+
+#sketchPadViewer {
+  position: fixed;
+  left: 0;
+  top: calc(50% - 200px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+#controlPanel {
+  position: fixed;
+  top: 40px;
+  right: 0;
+  width: 400px;
+  text-align: center;
 }

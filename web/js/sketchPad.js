@@ -1,5 +1,5 @@
 class SketchPad {
-  constructor(container, size = 400) {
+  constructor(container, onUpdate = null, size = 400) {
     this.canvas = document.createElement("canvas");
     this.canvas.width = size;
     this.canvas.height = size;
@@ -11,6 +11,8 @@ class SketchPad {
     container.appendChild(this.canvas);
 
     this.ctx = this.canvas.getContext("2d");
+
+    this.onUpdate = onUpdate;
 
     this.reset();
 
@@ -75,7 +77,9 @@ class SketchPad {
   #redraw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     draw.paths(this.ctx, this.paths);
+
+    if (this.onUpdate) {
+      this.onUpdate(this.paths);
+    }
   }
 }
-
-const sketchPad = new SketchPad(document.getElementById("sketchPadContainer"));

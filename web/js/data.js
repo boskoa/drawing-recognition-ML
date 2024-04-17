@@ -83,3 +83,5 @@ function save() {
 
 studentButton.addEventListener("click", start);
 nextButton.addEventListener("click", next);
+
+const sketchPad = new SketchPad(document.getElementById("sketchPadContainer"));

@@ -10,15 +10,30 @@
 
 <body>
   <h1 id="viewer">Data Viewer</h1>
+  <div id="sketchPadViewer">
+    <div id="sketchPadContainer"></div>
+    <br />
+    <button id="undo" class="buttons">UNDO</button>
+  </div>
   <div id="chartContainer"></div>
+  <div id="controlPanel">
+    <button id="toggleinput" class="buttons">Toogle Input</button>
+  </div>
   <div id="container"></div>
   <script src="../common/js_objects/features.js"></script>
   <script src="../common/constants.js"></script>
   <script src="../common/utils.js"></script>
+
   <script src="js/display.js"></script>
+
   <script src="./chart/graphics.js"></script>
   <script src="./chart/math.js"></script>
   <script src="./chart/chart.js"></script>
+
+  <script src="../common/draw.js"></script>
+  <script src="../common/featureFunctions.js"></script>
+  <script src="js/sketchPad.js"></script>
+
   <script src="js/viewer.js"></script>
 </body>
 
