@@ -9,23 +9,12 @@ for (const [student_id, samples] of Object.entries(groups)) {
 }
 
 const options = {
-  width: 400,
-  height: 400,
-  hAxis: { title: featureNames[0] },
-  vAxis: { title: featureNames[1] },
-  legend: { position: "none" },
-  explorer: { maxZoomIn: 0.01, actions: ["dragToZoom", "rightClickToReset"] },
+  size: 400,
+  axesLabels: featureNames,
+  styles: utils.styles,
+  transparency: 0.7,
+  icon: "image",
 };
+graphics.generateImages(utils.styles);
 
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(() => {
-  const data = new google.visualization.DataTable();
-  data.addColumn("number", featureNames[0]);
-  data.addColumn("number", featureNames[1]);
-  data.addColumn({ type: "string", role: "style" });
-  data.addRows(samples.map((s) => [...s.point, utils.styles[s.label]]));
-
-  const chart = new google.visualization.ScatterChart(chartContainer);
-  chart.draw(data, options);
-  console.log("LABELS", samples);
-});
+const chart = new Chart(chartContainer, samples, options, handleClick);

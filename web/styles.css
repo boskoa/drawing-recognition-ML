@@ -86,3 +86,17 @@ body {
 .blur {
   filter: blur(2px);
 }
+
+.emphasize {
+  background-color: yellow;
+}
+
+#container {
+  width: calc(100% - 400px);
+}
+
+#chartContainer {
+  position: fixed;
+  right: 0;
+  top: calc(50% - 200px);
+}
