@@ -5,6 +5,7 @@ const chartContainer = document.getElementById("chartContainer");
 const sketchPadContainer = document.getElementById("sketchPadContainer");
 const sketchPadViewer = document.getElementById("sketchPadViewer");
 const toggleinput = document.getElementById("toggleinput");
+const prediction = document.getElementById("prediction");
 
 for (const [student_id, samples] of Object.entries(groups)) {
   const studentName = samples[0].student_name;
@@ -22,12 +23,19 @@ graphics.generateImages(utils.styles);
 
 const chart = new Chart(chartContainer, samples, options, handleClick);
 
+function classify(point) {
+  const samplePoints = samples.map((s) => s.point);
+  const nearest = utils.getNearest(point, samplePoints);
+
+  return { label: samples[nearest].label, nearestSample: samples[nearest] };
+}
+
 function onDrawingUpdate(paths) {
-  const point = [
-    featureFunctions.getPathCount(paths),
-    featureFunctions.getPointCount(paths),
-  ];
-  console.log(point);
+  const functions = featureFunctions.inUse.map((f) => f.function);
+  point = functions.map((f) => f(paths));
+  const { label, nearestSample } = classify(point);
+  prediction.innerText = `Is it a ${label}?`;
+  chart.showDynamicPoint(point, label, nearestSample);
 }
 
 const sketchPad = new SketchPad(sketchPadContainer, onDrawingUpdate);

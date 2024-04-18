@@ -123,3 +123,9 @@ body {
   width: 400px;
   text-align: center;
 }
+
+#prediction {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

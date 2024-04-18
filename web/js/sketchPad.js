@@ -66,6 +66,12 @@ class SketchPad {
     };
   }
 
+  triggerUpdate() {
+    if (this.onUpdate) {
+      this.onUpdate(this.paths);
+    }
+  }
+
   #getMouse = (e) => {
     const rect = this.canvas.getBoundingClientRect();
     return [
@@ -78,8 +84,6 @@ class SketchPad {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     draw.paths(this.ctx, this.paths);
 
-    if (this.onUpdate) {
-      this.onUpdate(this.paths);
-    }
+    this.triggerUpdate();
   }
 }

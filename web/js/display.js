@@ -58,7 +58,9 @@ function handleClick(sample, doScroll = true) {
 function toggleInput() {
   if (sketchPadViewer.style.display === "none") {
     sketchPadViewer.style.display = "flex";
+    sketchPad.triggerUpdate();
   } else {
     sketchPadViewer.style.display = "none";
+    chart.hideDynamicPoint();
   }
 }
