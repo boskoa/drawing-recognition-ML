@@ -25,18 +25,27 @@ const chart = new Chart(chartContainer, samples, options, handleClick);
 
 function classify(point) {
   const samplePoints = samples.map((s) => s.point);
-  const nearest = utils.getNearest(point, samplePoints);
+  const indices = utils.getNearest(point, samplePoints, 5);
+  const nearestSamples = indices.map((i) => samples[i]);
+  const labels = nearestSamples.map((s) => s.label);
+  const counts = {};
+  labels.forEach((l) => (counts[l] ? counts[l]++ : (counts[l] = 1)));
+  const maxCount = Math.max(...Object.values(counts));
+  const label = labels.filter((l) => counts[l] === maxCount)[0];
 
-  return { label: samples[nearest].label, nearestSample: samples[nearest] };
+  return {
+    label,
+    nearestSamples,
+  };
 }
 
 function onDrawingUpdate(paths) {
   const functions = featureFunctions.inUse.map((f) => f.function);
   point = functions.map((f) => f(paths));
   utils.normalizePoints([point], minMax);
-  const { label, nearestSample } = classify(point);
+  const { label, nearestSamples } = classify(point);
   prediction.innerText = `Is it a ${label}?`;
-  chart.showDynamicPoint(point, label, nearestSample);
+  chart.showDynamicPoint(point, label, nearestSamples);
 }
 
 const sketchPad = new SketchPad(sketchPadContainer, onDrawingUpdate);
