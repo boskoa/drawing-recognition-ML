@@ -90,7 +90,7 @@ body {
 }
 
 .emphasize {
-  background-color: yellow;
+  background-color: yellow !important;
 }
 
 #container {
@@ -128,4 +128,20 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+#statistics {
+  max-width: 140px;
+  margin: 2px calc(calc(100% - 140px) / 2);
+  border: 2px solid coral;
+  font-size: 14px;
+
+  & p {
+    margin: 0;
+  }
+
+  &>hr {
+    color: coral;
+    border: 1px solid coral;
+  }
 }
