@@ -33,6 +33,7 @@ function classify(point) {
 function onDrawingUpdate(paths) {
   const functions = featureFunctions.inUse.map((f) => f.function);
   point = functions.map((f) => f(paths));
+  utils.normalizePoints([point], minMax);
   const { label, nearestSample } = classify(point);
   prediction.innerText = `Is it a ${label}?`;
   chart.showDynamicPoint(point, label, nearestSample);
@@ -42,4 +43,4 @@ const sketchPad = new SketchPad(sketchPadContainer, onDrawingUpdate);
 sketchPad.canvas.style.cssText += "outline: 100vh solid rgba(0, 0, 0, 0.3);";
 
 toggleinput.addEventListener("click", toggleInput);
-//2:11:00
+//2:44:00
