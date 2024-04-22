@@ -223,6 +223,7 @@ class Chart {
       /*
       graphics.drawPoint(ctx, pixelLoc, "rgba(255, 255, 255, 0.7)", 10000000);
       ctx.strokeStyle = "gray";
+      */
       for (const nearestSample of this.nearestSamples) {
         ctx.beginPath();
         ctx.moveTo(...pixelLoc);
@@ -235,7 +236,6 @@ class Chart {
         );
         ctx.stroke();
       }
-      */
       graphics.drawImage(ctx, this.styles[label].image, pixelLoc);
     }
 
