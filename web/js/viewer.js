@@ -28,9 +28,9 @@ for (const testSample of testingSamples) {
   totalCount++;
 }
 
-statistics.innerHTML = `<p>Total: ${totalCount}</p><p>Correct: ${correctCount}</p><hr /><p>Accuracy: ${utils.formatPercentage(
+statistics.innerHTML = `<span>Total: ${totalCount} / Correct: ${correctCount} --> Accuracy: ${utils.formatPercentage(
   correctCount / totalCount
-)}</p>`;
+)}</span>`;
 
 const trainingGroups = utils.groupBy(trainingSamples, "student_id");
 for (const [student_id, samples] of Object.entries(trainingGroups)) {
@@ -71,7 +71,7 @@ function onDrawingUpdate(paths) {
 }
 
 const sketchPad = new SketchPad(sketchPadContainer, onDrawingUpdate);
-sketchPad.canvas.style.cssText += "outline: 100vh solid rgba(0, 0, 0, 0.3);";
+//sketchPad.canvas.style.cssText += "outline: 100vh solid rgba(0, 0, 0, 0.3);";
 
 toggleInput();
 toggleinput.addEventListener("click", toggleInput);

@@ -200,7 +200,6 @@ class Chart {
     const topLeft = math.remapPoint(this.dataBounds, this.pixelBounds, [0, 1]);
     const sz = (canvas.width - this.margin * 2) / this.dataTrans.scale ** 2;
     ctx.drawImage(this.bg, ...topLeft, sz, sz);
-    /*
     ctx.globalAlpha = this.transparency;
     this.#drawSamples(this.samples);
     ctx.globalAlpha = 1;
@@ -212,7 +211,7 @@ class Chart {
     if (this.selectedSample) {
       this.#emphasizeSample(this.selectedSample, "yellow");
     }
-    */
+
     if (this.dynamicPoint) {
       const { point, label } = this.dynamicPoint;
       const pixelLoc = math.remapPoint(
@@ -220,10 +219,9 @@ class Chart {
         this.pixelBounds,
         point
       );
-      /*
       graphics.drawPoint(ctx, pixelLoc, "rgba(255, 255, 255, 0.7)", 10000000);
       ctx.strokeStyle = "gray";
-      */
+
       for (const nearestSample of this.nearestSamples) {
         ctx.beginPath();
         ctx.moveTo(...pixelLoc);
