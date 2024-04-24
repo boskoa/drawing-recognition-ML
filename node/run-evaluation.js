@@ -10,7 +10,7 @@ const { samples: trainingSamples } = JSON.parse(
   fs.readFileSync(constants.TRAINING)
 );
 
-const kNN = new KNN(trainingSamples, 10);
+const kNN = new KNN(trainingSamples, 8);
 
 const { samples: testingSamples } = JSON.parse(
   fs.readFileSync(constants.TESTING)
@@ -35,7 +35,7 @@ console.log(
 
 console.log("Generating decision boundary...");
 
-const canvas = createCanvas(100, 100);
+const canvas = createCanvas(1000, 1000);
 const ctx = canvas.getContext("2d");
 
 for (let x = 0; x < canvas.width; x++) {

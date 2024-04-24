@@ -4,7 +4,7 @@ class SketchPad {
     this.canvas.width = size;
     this.canvas.height = size;
     this.canvas.style = `
-      background-color: white;
+      background-color: rgb(201, 242, 201);
       box-shadow: 0px 0px 10px 2px black;
     `;
 

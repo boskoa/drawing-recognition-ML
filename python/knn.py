@@ -26,7 +26,7 @@ def read_feature_file(file_path):
     return (X, y)
 
 
-knn = KNeighborsClassifier(n_neighbors=9, algorithm="brute", weights="uniform")
+knn = KNeighborsClassifier(n_neighbors=5, algorithm="brute", weights="uniform")
 
 X, y = read_feature_file("../data/dataset/training.csv")
 

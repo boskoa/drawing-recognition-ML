@@ -70,15 +70,16 @@ function save() {
   const element = document.createElement("a");
   element.setAttribute(
     "href",
-    "data:text/plain;charset=utf-8," + encodeURIComponent(JSON.stringify(data))
+    "data:application/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(data))
   );
 
   const fileName = data.session + ".json";
   element.setAttribute("download", fileName);
-  element.style.display = "none";
-  document.body.appendChild(element);
+  //element.style.display = "none";
+  //document.body.appendChild(element);
   element.click();
-  document.body.removeChild(element);
+  //document.body.removeChild(element);
 }
 
 studentButton.addEventListener("click", start);

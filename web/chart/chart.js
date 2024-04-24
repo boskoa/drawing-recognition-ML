@@ -11,7 +11,7 @@ class Chart {
     this.canvas = document.createElement("canvas");
     this.canvas.width = options.size;
     this.canvas.height = options.size;
-    this.canvas.style = "background-color:white;";
+    this.canvas.style = "background-color:rgb(201, 242, 201);";
     container.appendChild(this.canvas);
 
     this.ctx = this.canvas.getContext("2d");

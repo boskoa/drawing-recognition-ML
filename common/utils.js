@@ -25,6 +25,7 @@ utils.groupBy = function (arr, key) {
 };
 
 utils.flaggedUsers = [1713106169257, 1713106169255, 1713106169256];
+utils.flaggedSamples = [];
 
 utils.styles = {
   car: { color: "gray", text: "🚗" },

@@ -13,7 +13,9 @@ function createRow(container, studentName, samples) {
 
     const sampleContainer = document.createElement("div");
     sampleContainer.id = `sample_${id}`;
-    sampleContainer.addEventListener("click", () => handleClick(sample, false));
+    sampleContainer.addEventListener("click", (e) =>
+      handleClick(e, sample, false)
+    );
     sampleContainer.classList.add("sampleContainer");
 
     if (correct) {
@@ -36,27 +38,31 @@ function createRow(container, studentName, samples) {
   }
 }
 
-function handleClick(sample, doScroll = true) {
-  if (sample === null) {
+function handleClick(e, sample, doScroll = true) {
+  if (e.ctrlKey) {
+    toggleFlaggedSample(sample);
+  } else {
+    if (sample === null) {
+      [...document.querySelectorAll(".emphasize")].forEach((e) =>
+        e.classList.remove("emphasize")
+      );
+      return;
+    }
+    const el = document.getElementById(`sample_${sample.id}`);
+    if (el.classList.contains("emphasize")) {
+      el.classList.remove("emphasize");
+      chart.selectSample(null);
+      return;
+    }
     [...document.querySelectorAll(".emphasize")].forEach((e) =>
       e.classList.remove("emphasize")
     );
-    return;
+    el.classList.add("emphasize");
+    if (doScroll) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+    chart.selectSample(sample);
   }
-  const el = document.getElementById(`sample_${sample.id}`);
-  if (el.classList.contains("emphasize")) {
-    el.classList.remove("emphasize");
-    chart.selectSample(null);
-    return;
-  }
-  [...document.querySelectorAll(".emphasize")].forEach((e) =>
-    e.classList.remove("emphasize")
-  );
-  el.classList.add("emphasize");
-  if (doScroll) {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-  chart.selectSample(sample);
 }
 
 function toggleInput() {
