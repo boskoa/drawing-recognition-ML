@@ -67,6 +67,12 @@ body {
 .row {
   display: flex;
   align-items: center;
+  gap: 5px;
+  padding: 5px;
+
+  &:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
 }
 
 .thumb {
@@ -77,6 +83,7 @@ body {
   flex: 2 1 0;
   text-overflow: ellipsis;
   overflow: hidden;
+  max-width: 150px;
 }
 
 .sampleContainer {
@@ -86,6 +93,7 @@ body {
   border-radius: 10%;
   margin: 1px;
   overflow: hidden;
+  border: 1px solid coral;
 }
 
 .blur {
@@ -100,7 +108,10 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+
+  &>h2 {
+    margin: 20px 0;
+  }
 }
 
 #fixedContainer {

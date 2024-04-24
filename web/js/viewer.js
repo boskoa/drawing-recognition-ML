@@ -75,4 +75,3 @@ const sketchPad = new SketchPad(sketchPadContainer, onDrawingUpdate);
 
 toggleInput();
 toggleinput.addEventListener("click", toggleInput);
-//2:44:00
