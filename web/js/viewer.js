@@ -61,6 +61,13 @@ graphics.generateImages(utils.styles);
 
 const chart = new Chart(chartContainer, trainingSamples, options, handleClick);
 
+const confusion = new Confusion(
+  confusionContainer,
+  testingSamples,
+  utils.classes,
+  options
+);
+
 function onDrawingUpdate(paths) {
   const functions = featureFunctions.inUse.map((f) => f.function);
   point = functions.map((f) => f(paths));
@@ -75,3 +82,4 @@ const sketchPad = new SketchPad(sketchPadContainer, onDrawingUpdate);
 
 toggleInput();
 toggleinput.addEventListener("click", toggleInput);
+toggleoutput.addEventListener("click", toggleOutput);

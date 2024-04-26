@@ -7,16 +7,7 @@ const instructionsContainer = document.getElementById("instructions-container");
 const nextButton = document.getElementById("next");
 
 let index = 0;
-const labels = [
-  "car",
-  "fish",
-  "house",
-  "tree",
-  "bicycle",
-  "guitar",
-  "pencil",
-  "clock",
-];
+const labels = utils.classes;
 
 const data = {
   student: null,
