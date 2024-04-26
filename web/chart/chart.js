@@ -107,7 +107,7 @@ class Chart {
       this.#draw();
       evt.preventDefault();
     };
-    canvas.onclick = () => {
+    canvas.onclick = (evt) => {
       if (!math.equals(dragInfo.offset, [0, 0])) {
         return;
       }
@@ -121,7 +121,7 @@ class Chart {
         this.selectedSample = null;
       }
       if (this.onClick) {
-        this.onClick(this.selectedSample);
+        this.onClick(evt, this.selectedSample);
       }
       this.#draw();
     };

@@ -66,13 +66,25 @@ class Confusion {
 
     for (let i = 1; i < this.N; i++) {
       mat[0][i] -= mat[i][0];
+      if (mat[0][i] > 0) {
+        mat[0][i] = "+" + mat[0][i];
+      }
     }
+
+    mat[0][0] = "";
 
     return mat;
   }
 
   #fillTable() {
     const { N, matrix, styles, classes, cellSize, table } = this;
+
+    const values = matrix
+      .slice(1)
+      .map((i) => i.slice(1))
+      .flat();
+    const min = Math.min(...values);
+    const max = Math.max(...values);
 
     for (let i = 0; i < N; i++) {
       const row = document.createElement("tr");
@@ -84,6 +96,40 @@ class Confusion {
         cell.style.height = cellSize + "px";
         cell.style.padding = "0px";
         cell.textContent = matrix[i][j];
+
+        if (i === 0 && j > 0) {
+          cell.style.backgroundImage = `url(${
+            styles[classes[j - 1]].image.src
+          })`;
+          cell.style.backgroundRepeat = "no-repeat";
+          cell.style.backgroundPosition = "50% 20%";
+          cell.style.verticalAlign = "bottom";
+          cell.style.fontWeight = "bold";
+          const p = (2 * matrix[i][j]) / matrix[j][i];
+          const r = p >= 0 ? p * 255 : 0;
+          const b = p <= 0 ? -p * 255 : 0;
+          cell.style.color = `rgb(${r}, 0, ${b})`;
+        }
+
+        if (j === 0 && i > 0) {
+          cell.style.backgroundImage = `url(${
+            styles[classes[i - 1]].image.src
+          })`;
+          cell.style.backgroundRepeat = "no-repeat";
+          cell.style.backgroundPosition = "50% 20%";
+          cell.style.verticalAlign = "bottom";
+          cell.style.fontWeight = "bold";
+        }
+
+        if (i > 0 && j > 0) {
+          const p = math.invLerp(min, max, matrix[i][j]);
+
+          if (i !== j) {
+            cell.style.backgroundColor = `rgba(255, 0, 0, ${p})`;
+          } else {
+            cell.style.backgroundColor = `rgba(0, 0, 255, ${p})`;
+          }
+        }
 
         row.appendChild(cell);
       }
