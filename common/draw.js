@@ -1,7 +1,7 @@
 const draw = {
-  path(ctx, path, color = "black") {
+  path(ctx, path, color = "black", width = 3) {
     ctx.strokeStyle = color;
-    ctx.lineWidth = "3px";
+    ctx.lineWidth = width;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.beginPath();
@@ -15,6 +15,12 @@ const draw = {
     for (const path of paths) {
       draw.path(ctx, path, color);
     }
+  },
+  text(ctx, text, color = "black", loc = [0, 0], size = 100) {
+    ctx.font = `bold ${size}px Courier`;
+    ctx.textBaseline = "top";
+    ctx.fillStyle = color;
+    ctx.fillText(text, ...loc);
   },
 };
 

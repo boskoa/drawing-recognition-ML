@@ -8,7 +8,7 @@ const toggleinput = document.getElementById("toggleinput");
 const prediction = document.getElementById("prediction");
 const statistics = document.getElementById("statistics");
 
-const k = 8;
+const k = 10;
 const kNN = new KNN(trainingSamples, k);
 let correctCount = 0;
 let totalCount = 0;
