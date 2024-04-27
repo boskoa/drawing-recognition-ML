@@ -3,6 +3,7 @@ const constants = require("../common/constants");
 const draw = require("../common/draw");
 const { createCanvas } = require("canvas");
 const utils = require("../common/utils");
+const geometry = require("../common/geometry");
 
 const fileNames = fs.readdirSync(constants.RAW_DIR);
 const samples = [];
@@ -13,6 +14,12 @@ const ctx = canvas.getContext("2d");
 function generateImageFile(outputFile, paths) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   draw.paths(ctx, paths);
+
+  const { vertices, hull } = geometry.minimumBoundingBox({
+    points: paths.flat(),
+  });
+  draw.path(ctx, [...vertices, vertices[0]], "red");
+  draw.path(ctx, [...hull, hull[0]], "blue");
 
   const buffer = canvas.toBuffer("image/png");
   fs.writeFileSync(outputFile, buffer);

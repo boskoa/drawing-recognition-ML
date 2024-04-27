@@ -145,9 +145,13 @@ body {
   height: 450px;
 }
 
+#chartContainer {
+  position: relative;
+}
+
 #confusionContainer {
   position: absolute;
-  width: calc(100% - 10px);
+  width: 100%;
   height: 100%;
   background-color: white;
 }

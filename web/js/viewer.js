@@ -55,6 +55,7 @@ const options = {
   transparency: 0.7,
   icon: "image",
   bg: new Image(),
+  //hideSamples: true,
 };
 options.bg.src = constants.DECISION_BOUNDARY;
 graphics.generateImages(utils.styles);
