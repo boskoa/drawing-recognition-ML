@@ -49,9 +49,7 @@ class MLP {
 
     for (const sample of samples) {
       const { label } = this.predict(sample.point);
-      if (label === sample.label) {
-        correctCount++;
-      }
+      correctCount += sample.label == label ? 1 : 0;
     }
 
     const accuracy = correctCount / samples.length;
