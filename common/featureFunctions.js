@@ -21,11 +21,17 @@ featureFunctions.getPointCount = function (paths) {
 };
 
 featureFunctions.getWidth = function (paths) {
+  if (!paths.length) {
+    return 0;
+  }
   const x = paths.flat().map((p) => p[0]);
   return Math.max(...x) - Math.min(...x);
 };
 
 featureFunctions.getHeight = function (paths) {
+  if (!paths.length) {
+    return 0;
+  }
   const y = paths.flat().map((p) => p[1]);
   return Math.max(...y) - Math.min(...y);
 };
@@ -35,8 +41,8 @@ featureFunctions.getElongation = function (paths) {
     points: paths.flat(),
   });
 
-  //return (Math.max(width, height) + 1) / (Math.min(width, height) + 1);
-  return (Math.min(width, height) + 1) / (Math.max(width, height) + 1);
+  return (Math.max(width, height) + 1) / (Math.min(width, height) + 1);
+  //return (Math.min(width, height) + 1) / (Math.max(width, height) + 1);
 };
 
 featureFunctions.getRoundness = function (paths) {

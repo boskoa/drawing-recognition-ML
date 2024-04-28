@@ -1,12 +1,12 @@
 const utils = {};
 
 utils.formatPercentage = function (ratio) {
-  return `${(ratio * 100).toFixed(1)} %\n`;
+  return `${(ratio * 100).toFixed(1)} %`;
 };
 
 utils.printProgress = function (count, max) {
   process.stdout.clearLine();
-  process.stdout.moveCursor(0);
+  process.stdout.cursorTo(0);
   const percentage = utils.formatPercentage(count / max);
   process.stdout.write(`${count}/${max} - ${percentage}`);
 };
