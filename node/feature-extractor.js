@@ -13,10 +13,12 @@ for (const sample of samples) {
   );
 
   const functions = featureFunctions.inUse.map((f) => f.function);
-  sample.point = functions.map((f) => f(paths));
+  //sample.point = functions.map((f) => f(paths));
+  sample.point = Object.values(functions[0](paths));
 }
 
-const featureNames = featureFunctions.inUse.map((f) => f.name);
+//const featureNames = featureFunctions.inUse.map((f) => f.name);
+const featureNames = Array(samples[0].point.length).fill(0);
 
 console.log("Generating splits...");
 

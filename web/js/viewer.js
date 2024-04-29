@@ -83,7 +83,8 @@ Visualizer.drawNetwork(networkCtx, mlp.network, outputLabels);
 
 function onDrawingUpdate(paths) {
   const functions = featureFunctions.inUse.map((f) => f.function);
-  point = functions.map((f) => f(paths));
+  //point = functions.map((f) => f(paths));
+  point = functions[0](paths);
   utils.normalizePoints([point], minMax);
   //const { label, nearestSamples } = kNN.predict(point);
   const { label, nearestSamples } = mlp.predict(point);

@@ -27,7 +27,7 @@ def read_feature_file(file_path):
     return (X, y)
 
 
-hidden = 10
+hidden = (10, 20, 20)
 mlp = MLPClassifier(hidden, max_iter=10000, random_state=2, activation="tanh")
 
 X, y = read_feature_file("../data/dataset/training.csv")
